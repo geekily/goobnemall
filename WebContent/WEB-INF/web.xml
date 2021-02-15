@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>study</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>helloServlet</servlet-name>
+  	<servlet-class>com.svt.Test1</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>helloServlet</servlet-name>
+  	<url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 1. ServletConfig 인터페이스 -->
+  <servlet>
+  	<servlet-name>test2Servlet</servlet-name>
+  	<servlet-class>com.svt.Test2</servlet-class>
+  	<init-param>
+  		<param-name>name</param-name>
+  		<param-value>유인나</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>age</param-name>
+  		<param-value>40</param-value>
+  	</init-param>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>test2Servlet</servlet-name>
+  	<url-pattern>/itwill</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 2. ServletContext 인터페이스 -->
+  <context-param>
+  	<param-name>gender</param-name>
+ 	<param-value>여자</param-value>
+  </context-param>
+  
+  
+  
+  
+  
+  
+  <!-- servlet/test3.jsp와 관련된 주소 -->
+  <servlet>
+  	<servlet-name>test3Servlet</servlet-name>
+  	<servlet-class>com.svt.Test3</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>test3Servlet</servlet-name>
+  	<url-pattern>/ss1</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  <!-- DBCP(Database Connection Pool) -->
+  <resource-ref>
+  	<description>Oracle DataSource</description>
+  	<res-ref-name>jdbc/MyOracle</res-ref-name>
+	<res-type>javax.sql.DataSource</res-type>
+	<res-auth>Container</res-auth>
+  </resource-ref>
+  
+  
+  <!-- Servlet 게시판 -->
+  <servlet>
+  	<servlet-name>boardServlet</servlet-name>
+  	<servlet-class>com.board.BoardServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>boardServlet</servlet-name>
+  	<url-pattern>/sbbs/*</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- Servlet 회원가입 -->
+  <servlet>
+  	<servlet-name>memberServlet</servlet-name>
+  	<servlet-class>com.join.MemberServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>memberServlet</servlet-name>
+  	<url-pattern>/join/*</url-pattern>
+  </servlet-mapping>
+  
+  
+   <!-- Servlet 성적처리 -->
+  <servlet>
+  	<servlet-name>scoreServlet</servlet-name>
+  	<servlet-class>com.score.ScoreServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>scoreServlet</servlet-name>
+  	<url-pattern>/record/*</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- Servlet파일 업로드 -->
+  <servlet>
+  	<servlet-name>fileTestServlet</servlet-name>
+  	<servlet-class>com.fileTest.FileTestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>fileTestServlet</servlet-name>
+  	<url-pattern>/file/*</url-pattern>
+  </servlet-mapping>
+  
+  <!--  Timer Filter -->
+ <!--  <filter>
+  	<filter-name>timerFilter</filter-name>
+  	<filter-class>com.filter.TimerFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>timerFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping> -->
+  
+  <!-- CharacterEncodingFilter -->
+  <filter>
+  	<filter-name>encodingFilter</filter-name>
+  	<filter-class>com.filter.CharacterEncodingFilter</filter-class>
+  	<init-param>
+  		<param-name>charset</param-name>
+  		<param-value>UTF-8</param-value>
+  	</init-param>
+  </filter>
+  <filter-mapping>
+  	<filter-name>encodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- login Filter -->
+ <!--  <filter>
+  	<filter-name>loginFilter</filter-name>
+  	<filter-class>com.filter.LoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>loginFilter</filter-name>
+  	<url-pattern>/sbbs/*</url-pattern>
+  </filter-mapping> -->
+  
+  
+    <!--서블릿 이미지 업로드 셋팅 -->
+  <servlet>
+ 	<servlet-name>imageServlet</servlet-name>
+  	<servlet-class>com.imageTest.ImageTestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>imageServlet</servlet-name>
+  	<url-pattern>/image/*</url-pattern>
+  </servlet-mapping>
+  
+  
+  <!-- Listener(HTTPSessionListener) -->
+  <listener>
+  	<listener-class>com.event.CountManager</listener-class>
+  </listener>
+  
+  
+  <!-- Listener(ServletContextListener) -->
+  <listener>
+  	<listener-class>com.event.ContextListenerTest</listener-class>
+  </listener>
+  
+  
+  <!-- 프로잭트 굽네몰 -->
+    <servlet>
+ 	<servlet-name>project01</servlet-name>
+  	<servlet-class>com.goobne.GoobneServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>project01</servlet-name>
+  	<url-pattern>/goobnemall/*</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
